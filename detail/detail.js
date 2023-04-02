@@ -1,7 +1,7 @@
 const urlParams = new URLSearchParams(window.location.search);
 const movieId = urlParams.get('id');
 
-const baseUrl = 'http://www.omdbapi.com/?apikey=44cd7259&plot=full&i='
+const baseUrl = 'https://www.omdbapi.com/?apikey=44cd7259&plot=full&i='
 
 const movieInfo = document.querySelector('.movie-info');
 const loader = document.querySelector('.loading');
