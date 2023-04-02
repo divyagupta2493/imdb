@@ -1,0 +1,66 @@
+.movie-info {
+	text-align: center;
+}
+
+.movie-info img {
+	max-width: 100%;
+	height: auto;
+	margin-bottom: 20px;
+}
+
+.movie-info h1 {
+	font-size: 36px;
+	margin-bottom: 10px;
+}
+
+.movie-info p {
+	font-size: 18px;
+	line-height: 1.5;
+}
+
+
+/* The Loading Animation */
+.loading {
+  width: 150px;
+  height: 70px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ball {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: black;
+  margin: 0 10px;
+}
+
+.first {
+  animation: slide 2s ease-in-out infinite;
+  animation-delay: .1s;
+}
+
+.second {
+  animation: slide 2s ease-in-out infinite;
+  animation-delay: .5s;
+}
+
+.third {
+  animation: slide 2s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+@keyframes slide {
+  from {
+    transform: translateY(-30px);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}

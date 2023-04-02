@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Movie Search</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <header>
+    <h1>Movie Search</h1>
+  </header>
+  <ul>
+    <li><a href="index.html">Search</a></li>
+    <li><a href="favourite/fav.html">Favourite</a></li>
+  </ul>
+  <div class="container">
+    <form>
+      <label for="search">Search for a movie:</label>
+      <input type="text" id="search" name="search" placeholder="Enter movie title...">
+    </form>
+    <ul id="results"></ul>
+  </div>
+  <div class="loading" style="display: none;">
+    <div class="ball first"></div>
+    <div class="ball second"></div>
+    <div class="ball third"></div>
+  </div>
+  <script src="index.js" defer></script>
+</body>
+
+</html>
