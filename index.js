@@ -22,35 +22,41 @@ var pages = null;
 // Create movie element and append to searchResults
 function createMovieElement(element) {
     const li = document.createElement('li');
+    
     const h2 = document.createElement('h2');
-    const favButton = document.createElement('button');
+    h2.innerHTML = `${element.Title}`;
+    li.appendChild(h2);
+
+    const favMovies = JSON.parse(localStorage.getItem("favMovies") || '{}');
+    const notInFavList = favMovies[element.imdbID] == undefined
+
+    if (notInFavList) {
+        const favButton = document.createElement('button');
+        // Assign unique id
+        favButton.dataset.imdbid = element.imdbID;
+        favButton.dataset.title = element.Title;
+        favButton.className = 'favorite-button';
+        favButton.innerHTML = 'Add to Favourites';
+        favButton.addEventListener('click', (e) => {
+            const target = e.target;
+            // get the movie title and id
+            const movieTitle = target.dataset.title;
+            const movieId = target.dataset.imdbid;
+            var favMovies = JSON.parse(localStorage.getItem("favMovies") || '{}');
+            favMovies[movieId] = movieTitle;
+            localStorage.setItem('favMovies', JSON.stringify(favMovies));
+            alert(movieTitle + ' - Added to favourite list');
+            target.parentElement.removeChild(target);
+        });
+        li.appendChild(favButton);
+    }
+
     const detail = document.createElement('a');
-
-    // Assign unique id
-    favButton.dataset.imdbid = element.imdbID;
-    favButton.dataset.title = element.Title;
-    favButton.className = 'favorite-button';
-
     detail.href = 'detail/detail.html?id=' + element.imdbID;
     detail.className = 'favorite-button';
     detail.textContent = 'Show Details';
-
-    h2.innerHTML = `${element.Title}`;
-    favButton.innerHTML = 'Add to Favourites';
-
-    favButton.addEventListener('click', (e) => {
-        const target = e.target;
-        // get the movie title and id
-        const movieTitle = target.dataset.title;
-        const movieId = target.dataset.imdbid;
-        var favMovies = JSON.parse(localStorage.getItem("favMovies") || '{}');
-        favMovies[movieId] = movieTitle;
-        localStorage.setItem('favMovies', JSON.stringify(favMovies));
-    });
-
-    li.appendChild(h2);
-    li.appendChild(favButton);
     li.appendChild(detail);
+    
     searchResults.appendChild(li);
 }
 
